@@ -1,0 +1,7 @@
+version: "3.9"
+services:
+
+  app:
+    image: joeydekort/intec-business-application:dev
+    ports:
+      - "8082:8082"
