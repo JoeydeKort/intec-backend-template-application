@@ -11,14 +11,20 @@
     </parent>
 
     <groupId>be.intecbrussel</groupId>
-    <artifactId>business</artifactId>
+    <artifactId>backend</artifactId>
     <version>0.0.1</version>
     <packaging>jar</packaging>
 
     <properties>
         <java.version>11</java.version>
         <spring-cloud.version>Hoxton.SR6</spring-cloud.version>
+        <vaadin.version>23.1.0</vaadin.version>
+        <selenium.version>4.1.2</selenium.version>
+        <org.mapstruct.version>1.5.2.Final</org.mapstruct.version>
+        <org.projectlombok.version>1.18.24</org.projectlombok.version>
+        <org.projectlombok.lombokmap.version>0.2.0</org.projectlombok.lombokmap.version>
     </properties>
+
 
     <dependencies>
         <dependency>
@@ -48,6 +54,17 @@
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-rest-hal-browser</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${org.projectlombok.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.javafaker</groupId>
+            <artifactId>javafaker</artifactId>
+            <version>1.0.2</version>
         </dependency>
 
         <dependency>

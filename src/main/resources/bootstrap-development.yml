@@ -1,7 +1,7 @@
 server.port: 8888
 
 spring:
-  application.name: business
+  application.name: backend
   cloud.config:
     discovery.enabled: false
     fail-fast: false
