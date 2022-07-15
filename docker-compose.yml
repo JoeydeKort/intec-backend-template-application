@@ -2,6 +2,56 @@ version: "3.9"
 services:
 
   app:
-    image: joeydekort/intec-backend-template-application:dev
+    build: .
     ports:
-      - "8082:8082"
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/kaartjedb
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    networks:
+      - devnet
+  #    volumes:
+  #      - appvol_base:/var/lib/kaartje
+  #      - appvol_data:/var/lib/kaartje/data
+
+  db:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=kaartjedb
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - devnet
+  #    volumes:
+  #      - dbvol_base:/var/lib/postgresql
+  #      - dbvol_data:/var/lib/postgresql/data
+
+  dba:
+    image: adminer:latest
+    restart: always
+    ports:
+      - "9090:8080"
+    networks:
+      - devnet
+
+networks:
+  pronet:
+  devnet:
+    driver: bridge
+
+volumes:
+  appvol_base: { }
+  appvol_data: { }
+  dbvol_base: { }
+  dbvol_data: { }
