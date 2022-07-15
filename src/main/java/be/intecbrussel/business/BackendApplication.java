@@ -8,10 +8,10 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableCircuitBreaker
-public class BizApplication {
+public class BackendApplication {
 
     public static void main(String... args) {
-        SpringApplication.run(BizApplication.class, args);
+        SpringApplication.run(BackendApplication.class, args);
     }
 
 }

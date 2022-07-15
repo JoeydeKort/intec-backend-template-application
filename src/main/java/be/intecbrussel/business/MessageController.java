@@ -17,13 +17,13 @@ public class MessageController {
     }
 
     @GetMapping("/")
-    public Collection<Message> getMessages() {
+    public Collection<MessageEntity> getMessages() {
         return repo.findAll();
     }
 
     @PostMapping("/")
-    public Message createMessage(@RequestBody Message message) {
-        return repo.save(message);
+    public MessageEntity createMessage(@RequestBody MessageEntity messageEntity) {
+        return repo.save(messageEntity);
 
     }
 
